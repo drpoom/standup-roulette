@@ -13,6 +13,24 @@ A gamified standup meeting timer that adds excitement and structure to your dail
 - **Responsive Design**: Works on desktop and mobile devices
 - **Persistent State**: Saves your team and settings in browser localStorage
 
+## Screenshots
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+*The main dashboard where you add team members and configure game settings.*
+
+### Base Theme - Active Speaker
+![Base Theme](screenshots/base-theme-active.png)
+*Clean, minimalist theme showing the active speaker with countdown timer.*
+
+### Squid Game Theme
+![Squid Game Theme](screenshots/squid-game-theme.png)
+*High-stakes Squid Game theme with elimination mechanics and prize pool tracking.*
+
+### Game Complete
+![Game Complete](screenshots/game-complete.png)
+*End screen showing meeting completion and participant status.*
+
 ## Quick Start
 
 ### Clone the Project
