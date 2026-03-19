@@ -29,7 +29,7 @@ A gamified standup meeting timer that adds excitement and structure to your dail
 
 ### Classroom Game Theme
 ![Classroom Game Theme](screenshots/classroom-game-theme.png)
-*Japanese classroom theme featuring strict sensei-led standups with praise/punishment mechanics - students who finish in time get "すごい! (GREAT!)" while those who run out face "罰! (PUNISHMENT!)" and elimination, complete with chalkboard aesthetics and desk seating.*
+*Japanese classroom theme with sensei-led standups featuring praise/punishment mechanics - timely finishers get "すごい!" while late speakers face "罰!" and elimination.*
 
 ### Game Complete
 ![Game Complete](screenshots/game-complete.png)
