@@ -23,9 +23,13 @@ A gamified standup meeting timer that adds excitement and structure to your dail
 ![Base Theme](screenshots/base-theme-active.png)
 *Clean, minimalist theme showing the active speaker with countdown timer.*
 
-### Squid Game Theme
-![Squid Game Theme](screenshots/squid-game-theme.png)
-*High-stakes Squid Game theme with elimination mechanics and prize pool tracking.*
+### Octopus Game Theme
+![Octopus Game Theme](screenshots/octopus-game-theme.png)
+*High-stakes Octopus Game theme with elimination mechanics and prize pool tracking.*
+
+### Classroom Game Theme
+![Classroom Game Theme](screenshots/classroom-game-theme.png)
+*Japanese classroom theme where participants are "students" in a strict sensei-led environment. Features praise/punishment mechanics with Japanese honorifics, chalkboard aesthetics, and desk seating arrangements. Students who finish their updates in time receive praise ("すごい!"), while those who run out of time face punishment and elimination.*
 
 ### Game Complete
 ![Game Complete](screenshots/game-complete.png)
@@ -72,7 +76,7 @@ Standup Roulette supports multiple visual themes that change the entire experien
 ### Available Themes
 
 - **Base Theme**: Clean, minimalist design with cyan accents on dark slate background
-- **Classroom Theme**: Educational feel with structured layouts
+- **Classroom Theme**: Japanese classroom environment with sensei-led standups, praise/punishment mechanics, and traditional school aesthetics
 - **Squid Game Theme**: High-stakes gamification with elimination mechanics, prize pool tracking, and dramatic visual effects
 
 ### How to Add Additional Skins
