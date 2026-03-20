@@ -40,7 +40,7 @@ A gamified standup meeting timer that adds excitement and structure to your dail
 ### Clone the Project
 
 ```bash
-git clone https://github.com/yourusername/standup-roulette.git
+git clone https://github.com/drpoom/standup-roulette.git
 cd standup-roulette
 ```
 
