@@ -1,5 +1,5 @@
 <template>
-  <div class="dojo-rice-paper h-screen w-full p-4 flex flex-col justify-center items-center relative">
+  <div class="dojo-scene h-screen w-full p-4 flex flex-col justify-center items-center relative">
 
     <!-- ====== INTRO CUTSCENE ====== -->
     <div v-if="showIntro" class="dojo-intro">
