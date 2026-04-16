@@ -19,7 +19,7 @@
 .dojo-scene {
   position: relative;
   background-color: #0D0D0F;
-  background-image: url('/sensei/dojo_background.png');
+  background-image: url('../assets/sensei/dojo_background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
