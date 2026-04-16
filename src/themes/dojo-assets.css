@@ -1,0 +1,687 @@
+/**
+ * Dōjō (道場) Theme — Pure CSS Visual Assets
+ * Standup Roulette
+ * 
+ * Color Palette:
+ * - Sumi Black: #0D0D0F
+ * - Crimson Seal: #C41E3A
+ * - Gold Leaf: #D4AF37
+ * - Rice Paper: #F5F1E8
+ * - Indigo Ink: #1E3A5F
+ * - Moss Green: #4A6741
+ * - White: #FFFFFF
+ * - Deep Purple: #2D1B3D
+ */
+
+/* ============================================
+   1. Rice Paper Texture
+   ============================================ */
+.dojo-rice-paper {
+  position: relative;
+  background-color: #0D0D0F;
+}
+
+.dojo-rice-paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(245, 241, 232, 0.03) 2px,
+      rgba(245, 241, 232, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(245, 241, 232, 0.03) 2px,
+      rgba(245, 241, 232, 0.03) 4px
+    ),
+    radial-gradient(
+      ellipse at 20% 30%,
+      rgba(245, 241, 232, 0.02) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 70%,
+      rgba(245, 241, 232, 0.02) 0%,
+      transparent 50%
+    );
+  background-size: 100% 100%, 100% 100%, 200% 200%, 200% 200%;
+  z-index: 1;
+}
+
+.dojo-rice-paper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+/* ============================================
+   2. Screen Crack Effect
+   ============================================ */
+.dojo-crack-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9999;
+  background: 
+    radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      rgba(13, 13, 15, 0.8) 100%
+    );
+}
+
+.dojo-crack-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      45deg,
+      transparent 48%,
+      rgba(196, 30, 58, 0.3) 49%,
+      rgba(196, 30, 58, 0.3) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 48%,
+      rgba(196, 30, 58, 0.3) 49%,
+      rgba(196, 30, 58, 0.3) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 49%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 51%
+    ),
+    linear-gradient(
+      -135deg,
+      transparent 49%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 51%
+    );
+  background-size: 200% 200%, 200% 200%, 100% 100%, 100% 100%;
+  background-position: 30% 30%, 70% 70%, 0% 0%, 100% 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.dojo-crack-overlay::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  background: 
+    radial-gradient(
+      circle,
+      transparent 0%,
+      transparent 40%,
+      rgba(196, 30, 58, 0.4) 41%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle,
+      transparent 0%,
+      transparent 30%,
+      rgba(255, 255, 255, 0.2) 31%,
+      transparent 32%
+    );
+  background-size: 100% 100%;
+  opacity: 0;
+}
+
+.dojo-crack-overlay.active {
+  opacity: 1;
+}
+
+.dojo-crack-overlay.active::before {
+  opacity: 1;
+  animation: crack-flicker 0.3s ease-out;
+}
+
+.dojo-crack-overlay.active::after {
+  animation: crack-expand 0.4s ease-out forwards;
+}
+
+@keyframes crack-flicker {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 0.5; }
+  30% { opacity: 1; }
+  40% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes crack-expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 150vmax;
+    height: 150vmax;
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   3. Gold Particle Burst
+   ============================================ */
+.dojo-gold-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.dojo-gold-burst::before,
+.dojo-gold-burst::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.dojo-gold-burst::before {
+  background: #D4AF37;
+  box-shadow: 
+    0 0 10px 2px rgba(212, 175, 55, 0.8),
+    0 0 20px 4px rgba(212, 175, 55, 0.4);
+}
+
+.dojo-gold-burst::after {
+  background: transparent;
+  box-shadow: 
+    -80px -60px 0 1px #D4AF37,
+    70px -50px 0 1px #D4AF37,
+    -90px 40px 0 1px #D4AF37,
+    85px 55px 0 1px #D4AF37,
+    0px -90px 0 1px #D4AF37,
+    -60px -80px 0 1px #D4AF37,
+    65px -75px 0 1px #D4AF37,
+    -75px 70px 0 1px #D4AF37,
+    80px 65px 0 1px #D4AF37,
+    -50px 85px 0 1px #D4AF37,
+    55px 80px 0 1px #D4AF37,
+    0px 95px 0 1px #D4AF37,
+    -100px 0px 0 1px #D4AF37,
+    105px 5px 0 1px #D4AF37,
+    -40px -95px 0 1px #D4AF37,
+    45px -90px 0 1px #D4AF37;
+}
+
+.dojo-gold-burst.active::before {
+  animation: gold-center-pulse 0.6s ease-out;
+}
+
+.dojo-gold-burst.active::after {
+  animation: gold-particle-explode 0.8s ease-out forwards;
+}
+
+@keyframes gold-center-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes gold-particle-explode {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   4. Cherry Blossom Particles
+   ============================================ */
+.dojo-sakura {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.dojo-sakura::before,
+.dojo-sakura::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50% 0 50% 50%;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+
+.dojo-sakura::before {
+  background: linear-gradient(135deg, #ffb7c5 0%, #ffe4ec 100%);
+  top: -20px;
+  left: 10%;
+  box-shadow: 
+    150px 100px 0 -2px rgba(255, 183, 197, 0.6),
+    300px 50px 0 -1px rgba(255, 228, 236, 0.5),
+    500px 150px 0 -2px rgba(255, 183, 197, 0.7),
+    100px 300px 0 -1px rgba(255, 228, 236, 0.4),
+    400px 250px 0 -2px rgba(255, 183, 197, 0.6),
+    600px 200px 0 -1px rgba(255, 228, 236, 0.5);
+}
+
+.dojo-sakura::after {
+  background: linear-gradient(135deg, #ffe4ec 0%, #ffb7c5 100%);
+  top: -15px;
+  left: 60%;
+  box-shadow: 
+    200px 80px 0 -2px rgba(255, 228, 236, 0.5),
+    450px 120px 0 -1px rgba(255, 183, 197, 0.6),
+    150px 280px 0 -2px rgba(255, 228, 236, 0.4),
+    550px 300px 0 -1px rgba(255, 183, 197, 0.7),
+    350px 350px 0 -2px rgba(255, 228, 236, 0.5);
+}
+
+.dojo-sakura.active::before {
+  animation: sakura-fall-1 8s linear infinite;
+}
+
+.dojo-sakura.active::after {
+  animation: sakura-fall-2 10s linear infinite;
+  animation-delay: 2s;
+}
+
+@keyframes sakura-fall-1 {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(-45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh) translateX(50px) rotate(315deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sakura-fall-2 {
+  0% {
+    transform: translateY(-15px) translateX(0) rotate(-45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110vh) translateX(-80px) rotate(225deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   5. Ink Splash Transition
+   ============================================ */
+.dojo-ink-splash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-out;
+}
+
+.dojo-ink-splash::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #0D0D0F 0%,
+    #0D0D0F 70%,
+    transparent 71%
+  );
+  opacity: 0;
+}
+
+.dojo-ink-splash::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(30, 58, 95, 0.3) 0%,
+    rgba(30, 58, 95, 0.1) 50%,
+    transparent 51%
+  );
+  opacity: 0;
+}
+
+.dojo-ink-splash.active::before {
+  opacity: 1;
+  animation: ink-expand-main 0.5s ease-in-out;
+}
+
+.dojo-ink-splash.active::after {
+  opacity: 1;
+  animation: ink-expand-halo 0.6s ease-in-out;
+  animation-delay: 0.1s;
+}
+
+@keyframes ink-expand-main {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    width: 200vmax;
+    height: 200vmax;
+    opacity: 1;
+  }
+}
+
+@keyframes ink-expand-halo {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    width: 220vmax;
+    height: 220vmax;
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   6. Red Stamp Effect
+   ============================================ */
+.dojo-stamp {
+  display: inline-block;
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #C41E3A;
+  text-shadow: 0 0 0 rgba(196, 30, 58, 0);
+  opacity: 0;
+  transform: scale(0.3) rotate(-15deg);
+  border: 4px solid #C41E3A;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+}
+
+.dojo-stamp.active {
+  animation: stamp-press 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes stamp-press {
+  0% {
+    transform: scale(0.3) rotate(-15deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+  }
+  70% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    text-shadow: 0 2px 4px rgba(196, 30, 58, 0.3);
+  }
+}
+
+/* ============================================
+   7. Shimenawa Rope Divider
+   ============================================ */
+.dojo-shimenawa {
+  position: relative;
+  height: clamp(1rem, 3vw, 2rem);
+  margin: clamp(1rem, 4vw, 3rem) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dojo-shimenawa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      #D4AF37 0px,
+      #D4AF37 8px,
+      #F5F1E8 8px,
+      #F5F1E8 16px,
+      #D4AF37 16px,
+      #D4AF37 24px,
+      #F5F1E8 24px,
+      #F5F1E8 32px
+    );
+  border-radius: 2px;
+  box-shadow: 
+    inset 0 2px 4px rgba(13, 13, 15, 0.3),
+    0 2px 4px rgba(13, 13, 15, 0.2);
+}
+
+.dojo-shimenawa::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(2rem, 6vw, 4rem);
+  height: clamp(1.5rem, 4vw, 2.5rem);
+  background: linear-gradient(
+    135deg,
+    #D4AF37 0%,
+    #F5F1E8 25%,
+    #D4AF37 50%,
+    #F5F1E8 75%,
+    #D4AF37 100%
+  );
+  clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  box-shadow: 0 2px 6px rgba(13, 13, 15, 0.3);
+}
+
+/* Zigzag paper streamers (shide) */
+.dojo-shimenawa .shide {
+  position: absolute;
+  bottom: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.dojo-shimenawa .shide::before,
+.dojo-shimenawa .shide::after {
+  content: '';
+  width: clamp(0.5rem, 1.5vw, 0.8rem);
+  height: clamp(1.5rem, 4vw, 2.5rem);
+  background: #F5F1E8;
+  clip-path: polygon(
+    50% 100%,
+    0% 0%,
+    100% 0%
+  );
+  box-shadow: 0 2px 4px rgba(13, 13, 15, 0.2);
+}
+
+/* ============================================
+   8. Kanji Glow
+   ============================================ */
+.dojo-kanji-glow {
+  display: inline-block;
+  color: #D4AF37;
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 30px rgba(212, 175, 55, 0.1);
+  animation: kanji-pulse 3s ease-in-out infinite;
+}
+
+@keyframes kanji-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(212, 175, 55, 0.5),
+      0 0 20px rgba(212, 175, 55, 0.3),
+      0 0 30px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    text-shadow: 
+      0 0 15px rgba(212, 175, 55, 0.8),
+      0 0 30px rgba(212, 175, 55, 0.5),
+      0 0 45px rgba(212, 175, 55, 0.3),
+      0 0 60px rgba(212, 175, 55, 0.1);
+  }
+}
+
+.dojo-kanji-glow:hover {
+  animation: kanji-intensify 0.3s ease-out forwards;
+}
+
+@keyframes kanji-intensify {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(212, 175, 55, 0.5),
+      0 0 20px rgba(212, 175, 55, 0.3),
+      0 0 30px rgba(212, 175, 55, 0.1);
+  }
+  100% {
+    text-shadow: 
+      0 0 20px rgba(212, 175, 55, 1),
+      0 0 40px rgba(212, 175, 55, 0.7),
+      0 0 60px rgba(212, 175, 55, 0.5),
+      0 0 80px rgba(212, 175, 55, 0.3);
+  }
+}
+
+/* ============================================
+   Reduced Motion Preferences
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .dojo-crack-overlay.active::before,
+  .dojo-crack-overlay.active::after,
+  .dojo-gold-burst.active::before,
+  .dojo-gold-burst.active::after,
+  .dojo-sakura.active::before,
+  .dojo-sakura.active::after,
+  .dojo-ink-splash.active::before,
+  .dojo-ink-splash.active::after,
+  .dojo-stamp.active,
+  .dojo-kanji-glow {
+    animation: none;
+    transition: none;
+  }
+
+  .dojo-crack-overlay.active,
+  .dojo-gold-burst.active,
+  .dojo-sakura.active,
+  .dojo-ink-splash.active,
+  .dojo-stamp.active {
+    opacity: 1;
+  }
+
+  .dojo-stamp.active {
+    transform: scale(1) rotate(0deg);
+  }
+
+  .dojo-kanji-glow {
+    text-shadow: 
+      0 0 10px rgba(212, 175, 55, 0.5),
+      0 0 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .dojo-kanji-glow:hover {
+    animation: none;
+  }
+}
+
+/* ============================================
+   Mobile Optimizations
+   ============================================ */
+@media (max-width: 768px) {
+  .dojo-stamp {
+    font-size: clamp(2rem, 10vw, 4rem);
+    border-width: 3px;
+    padding: 0.15em 0.3em;
+  }
+
+  .dojo-shimenawa {
+    margin: clamp(0.75rem, 3vw, 2rem) 0;
+  }
+
+  .dojo-gold-burst::after {
+    box-shadow: 
+      -60px -45px 0 1px #D4AF37,
+      55px -40px 0 1px #D4AF37,
+      -70px 30px 0 1px #D4AF37,
+      65px 45px 0 1px #D4AF37,
+      0px -70px 0 1px #D4AF37,
+      -45px -60px 0 1px #D4AF37,
+      50px -55px 0 1px #D4AF37,
+      -55px 50px 0 1px #D4AF37,
+      60px 50px 0 1px #D4AF37;
+  }
+}
