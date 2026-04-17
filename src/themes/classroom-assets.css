@@ -1,0 +1,319 @@
+/**
+ * Japanese Classroom (教室) Theme — CSS Visual Assets
+ * Classic 1990s-2000s manga school aesthetic
+ * 
+ * Color Palette:
+ * - Chalkboard Green: #2C4A1E
+ * - Wood Frame: #8B6914
+ * - Warm Gold: #C4A35A
+ * - Cream/Chalk: #FFF8E7
+ * - Crimson Stamp: #C41E3A
+ * - Warm White: #F5F0E0
+ */
+
+/* ============================================
+   1. Classroom Scene (AI Background + Overlay)
+   ============================================ */
+.classroom-scene {
+  position: relative;
+  background-color: #FFF8E7;
+  background-image: url('../assets/sensei/classroom_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Warm vignette overlay */
+.classroom-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 50%, rgba(255, 248, 231, 0.6) 100%),
+    linear-gradient(0deg, rgba(44, 74, 30, 0.1) 0%, transparent 20%, transparent 80%, rgba(44, 74, 30, 0.1) 100%);
+  z-index: 1;
+}
+
+/* Subtle paper texture */
+.classroom-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+/* ============================================
+   2. Chalk Dust Burst (punish feedback)
+   ============================================ */
+.classroom-chalk-burst {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+}
+
+.classroom-chalk-burst::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 248, 231, 0.9) 0%, transparent 25%),
+    radial-gradient(circle at 30% 40%, rgba(255, 248, 231, 0.6) 0%, transparent 20%),
+    radial-gradient(circle at 70% 60%, rgba(255, 248, 231, 0.6) 0%, transparent 20%),
+    radial-gradient(circle at 40% 70%, rgba(255, 248, 231, 0.4) 0%, transparent 15%);
+  opacity: 0;
+}
+
+.classroom-chalk-burst.active {
+  opacity: 1;
+}
+
+.classroom-chalk-burst.active::before {
+  animation: chalk-poof 0.8s ease-out forwards;
+}
+
+@keyframes chalk-poof {
+  0% { transform: scale(0.3); opacity: 0; }
+  20% { transform: scale(1.2); opacity: 1; }
+  40% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ============================================
+   3. Gold Particle Burst (praise feedback)
+   ============================================ */
+.classroom-gold-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.classroom-gold-burst::before,
+.classroom-gold-burst::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.classroom-gold-burst::before {
+  background: #C4A35A;
+  box-shadow:
+    0 0 10px 2px rgba(196, 163, 90, 0.8),
+    0 0 20px 4px rgba(196, 163, 90, 0.4);
+}
+
+.classroom-gold-burst::after {
+  background: transparent;
+  box-shadow:
+    -80px -60px 0 1px #C4A35A,
+    70px -50px 0 1px #C4A35A,
+    -90px 40px 0 1px #C4A35A,
+    85px 55px 0 1px #C4A35A,
+    0px -90px 0 1px #C4A35A,
+    -60px -80px 0 1px #C4A35A,
+    65px -75px 0 1px #C4A35A,
+    -75px 70px 0 1px #C4A35A,
+    80px 65px 0 1px #C4A35A,
+    -50px 85px 0 1px #C4A35A,
+    55px 80px 0 1px #C4A35A,
+    0px 95px 0 1px #C4A35A,
+    -100px 0px 0 1px #C4A35A,
+    105px 5px 0 1px #C4A35A;
+}
+
+.classroom-gold-burst.active::before {
+  animation: gold-center-pulse 0.6s ease-out;
+}
+
+.classroom-gold-burst.active::after {
+  animation: gold-particle-explode 0.8s ease-out forwards;
+}
+
+@keyframes gold-center-pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+@keyframes gold-particle-explode {
+  0% { transform: translate(-50%, -50%); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+/* ============================================
+   4. Cherry Blossom Particles
+   ============================================ */
+.classroom-sakura {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.classroom-sakura::before,
+.classroom-sakura::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50% 0 50% 50%;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+
+.classroom-sakura::before {
+  background: linear-gradient(135deg, #ffb7c5 0%, #ffe4ec 100%);
+  top: -20px;
+  left: 10%;
+  box-shadow:
+    150px 100px 0 -2px rgba(255, 183, 197, 0.6),
+    300px 50px 0 -1px rgba(255, 228, 236, 0.5),
+    500px 150px 0 -2px rgba(255, 183, 197, 0.7),
+    100px 300px 0 -1px rgba(255, 228, 236, 0.4),
+    400px 250px 0 -2px rgba(255, 183, 197, 0.6),
+    600px 200px 0 -1px rgba(255, 228, 236, 0.5);
+}
+
+.classroom-sakura::after {
+  background: linear-gradient(135deg, #ffe4ec 0%, #ffb7c5 100%);
+  top: -15px;
+  left: 60%;
+  box-shadow:
+    200px 80px 0 -2px rgba(255, 228, 236, 0.5),
+    450px 120px 0 -1px rgba(255, 183, 197, 0.6),
+    150px 280px 0 -2px rgba(255, 228, 236, 0.4),
+    550px 300px 0 -1px rgba(255, 183, 197, 0.7),
+    350px 350px 0 -2px rgba(255, 228, 236, 0.5);
+}
+
+.classroom-sakura.active::before {
+  animation: sakura-fall-1 8s linear infinite;
+}
+
+.classroom-sakura.active::after {
+  animation: sakura-fall-2 10s linear infinite;
+  animation-delay: 2s;
+}
+
+@keyframes sakura-fall-1 {
+  0% { transform: translateY(-20px) translateX(0) rotate(-45deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(110vh) translateX(50px) rotate(315deg); opacity: 0; }
+}
+
+@keyframes sakura-fall-2 {
+  0% { transform: translateY(-15px) translateX(0) rotate(-45deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(110vh) translateX(-80px) rotate(225deg); opacity: 0; }
+}
+
+/* ============================================
+   5. Red Stamp Effect (hanko)
+   ============================================ */
+.classroom-stamp {
+  display: inline-block;
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #C41E3A;
+  text-shadow: 0 0 0 rgba(196, 30, 58, 0);
+  opacity: 0;
+  transform: scale(0.3) rotate(-15deg);
+  border: 4px solid #C41E3A;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+  background: rgba(255, 248, 231, 0.8);
+}
+
+.classroom-stamp.active {
+  animation: stamp-press 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes stamp-press {
+  0% { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(5deg); opacity: 1; text-shadow: 0 0 10px rgba(196, 30, 58, 0.5); }
+  70% { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; text-shadow: 0 2px 4px rgba(196, 30, 58, 0.3); }
+}
+
+/* ============================================
+   6. Kanji Warm Glow
+   ============================================ */
+.kanji-warm {
+  display: inline-block;
+  color: #2C4A1E;
+  text-shadow:
+    0 0 10px rgba(44, 74, 30, 0.3),
+    0 0 20px rgba(196, 163, 90, 0.2);
+  animation: kanji-warm-pulse 3s ease-in-out infinite;
+}
+
+@keyframes kanji-warm-pulse {
+  0%, 100% { text-shadow: 0 0 10px rgba(44, 74, 30, 0.3), 0 0 20px rgba(196, 163, 90, 0.2); }
+  50% { text-shadow: 0 0 15px rgba(44, 74, 30, 0.5), 0 0 30px rgba(196, 163, 90, 0.4), 0 0 45px rgba(196, 163, 90, 0.2); }
+}
+
+/* ============================================
+   Reduced Motion Preferences
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .classroom-chalk-burst.active::before,
+  .classroom-gold-burst.active::before,
+  .classroom-gold-burst.active::after,
+  .classroom-sakura.active::before,
+  .classroom-sakura.active::after,
+  .classroom-stamp.active,
+  .kanji-warm {
+    animation: none;
+  }
+
+  .classroom-chalk-burst.active,
+  .classroom-gold-burst.active,
+  .classroom-sakura.active,
+  .classroom-stamp.active {
+    opacity: 1;
+  }
+
+  .classroom-stamp.active {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* ============================================
+   Mobile Optimizations
+   ============================================ */
+@media (max-width: 768px) {
+  .classroom-stamp {
+    font-size: clamp(2rem, 10vw, 4rem);
+    border-width: 3px;
+    padding: 0.15em 0.3em;
+  }
+
+  .classroom-gold-burst::after {
+    box-shadow:
+      -60px -45px 0 1px #C4A35A,
+      55px -40px 0 1px #C4A35A,
+      -70px 30px 0 1px #C4A35A,
+      65px 45px 0 1px #C4A35A,
+      0px -70px 0 1px #C4A35A,
+      -45px -60px 0 1px #C4A35A,
+      50px -55px 0 1px #C4A35A,
+      -55px 50px 0 1px #C4A35A,
+      60px 50px 0 1px #C4A35A;
+  }
+}

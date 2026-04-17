@@ -7,19 +7,23 @@
 <script setup>
 import { computed } from 'vue'
 
-import defaultImg from '../assets/sensei/sensei_default.png'
-import pleasedImg from '../assets/sensei/sensei_pleased.png'
-import sternImg from '../assets/sensei/sensei_stern.png'
+import normalImg from '../assets/sensei/sensei_normal.png'
+import angryImg from '../assets/sensei/sensei_angry.png'
+import satisfiedImg from '../assets/sensei/sensei_satisfied.png'
 
-const props = defineProps({ expression: { type: String, default: 'default' } })
+const props = defineProps({ expression: { type: String, default: 'normal' } })
 
 const imageSrc = computed(() => {
   const sprites = {
-    default: defaultImg,
-    pleased: pleasedImg,
-    stern: sternImg
+    normal: normalImg,
+    angry: angryImg,
+    satisfied: satisfiedImg,
+    // Backward compatibility with old names
+    default: normalImg,
+    stern: angryImg,
+    pleased: satisfiedImg
   }
-  return sprites[props.expression] || sprites.default
+  return sprites[props.expression] || sprites.normal
 })
 </script>
 

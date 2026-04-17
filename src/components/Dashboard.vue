@@ -127,7 +127,7 @@ const newName = ref('');
 const availableThemes = [
   { id: 'base', name: 'Minimalist' },
   { id: 'squid', name: 'Octopus Game' },
-  { id: 'classroom', name: '道場 Dōjō', description: 'Cyber-noir training grounds where shadows teach and steel meets code' }
+  { id: 'classroom', name: '教室 Classroom', description: 'Classic 90s Japanese homeroom — the teacher is watching' }
 ];
 
 function handleAdd() {

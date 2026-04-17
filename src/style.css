@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "./themes/dojo-assets.css";
+@import "./themes/classroom-assets.css";
 
 @layer base {
   body {
