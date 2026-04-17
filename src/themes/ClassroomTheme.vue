@@ -168,7 +168,7 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import useStandup from '../composables/useStandup'
 import { X as XIcon } from 'lucide-vue-next'
 import SenseiAvatar from '../components/SenseiAvatar.vue'
-import { playDojoIntro, playDojoPraise, playDojoPunish, playDojoSelect, playDojoTimer30, playDojoTimer10 } from '../utils/audio'
+import { playClassroomIntro, playClassroomPraise, playClassroomPunish, playClassroomSelect, playClassroomTimer30, playClassroomTimer10 } from '../utils/audio'
 // BGM imported via Vite asset pipeline
 import bgmFile from '../assets/sensei/classroom_bgm.mp3'
 
@@ -200,7 +200,7 @@ const senseiExpression = computed(() => {
 
 // Intro sequence
 onMounted(() => {
-  playDojoIntro()
+  playClassroomIntro()
   introPhase.value = 1
   setTimeout(() => (introPhase.value = 2), 2000)
   setTimeout(() => (introPhase.value = 3), 4000)
@@ -253,7 +253,7 @@ function addLatecomer() {
 
 function handleDone() {
   if (timeRemaining.value > 0 || timeRemaining.value === -1) {
-    playDojoPraise()
+    playClassroomPraise()
     showFeedback('praise')
   } else {
     endTurn('done')
@@ -263,13 +263,13 @@ function handleDone() {
 // Watch timer for auto-elimination + audio cues
 watch(timeRemaining, (newVal, oldVal) => {
   if (newVal === 0 && oldVal > 0) {
-    playDojoPunish()
+    playClassroomPunish()
     showFeedback('punish')
     endTurn('eliminated')
   } else if (newVal === 30 && oldVal > 30) {
-    playDojoTimer30()
+    playClassroomTimer30()
   } else if (newVal === 10 && oldVal > 10) {
-    playDojoTimer10()
+    playClassroomTimer10()
   }
 })
 

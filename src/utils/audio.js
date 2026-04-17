@@ -35,7 +35,7 @@ export function playPunish() { playTone(200, 'square', 0.3, 0.2); setTimeout(() 
 export function playBlip() { playTone(400, 'square', 0.05); }
 export function playStart() { playTone(400, 'square', 0.1); setTimeout(() => playTone(600, 'square', 0.2), 150); }
 
-// Dōjō theme audio — synthesized approximations
+// Classroom theme audio — synthesized approximations
 function playNoiseBurst(duration, vol = 0.08) {
   if (!audioCtx) return;
   try {
@@ -56,7 +56,7 @@ function playNoiseBurst(duration, vol = 0.08) {
   } catch (e) { console.error(e); }
 }
 
-export function playDojoIntro() {
+export function playClassroomIntro() {
   // Deep taiko hit
   playTone(80, 'sine', 0.8, 0.3);
   setTimeout(() => playTone(100, 'sine', 0.4, 0.15), 100);
@@ -65,7 +65,7 @@ export function playDojoIntro() {
   setTimeout(() => playTone(1100, 'square', 0.1, 0.08), 500);
 }
 
-export function playDojoPraise() {
+export function playClassroomPraise() {
   // Taiko roll into gong
   playTone(90, 'sine', 0.15, 0.2);
   setTimeout(() => playTone(95, 'sine', 0.15, 0.2), 100);
@@ -75,25 +75,25 @@ export function playDojoPraise() {
   setTimeout(() => playTone(400, 'sine', 1.2, 0.15), 400);
 }
 
-export function playDojoPunish() {
+export function playClassroomPunish() {
   // Low drum thud + scratch
   playTone(70, 'sine', 0.5, 0.25);
   setTimeout(() => playNoiseBurst(0.3, 0.1), 150);
   setTimeout(() => playTone(55, 'sine', 0.3, 0.15), 200);
 }
 
-export function playDojoSelect() {
+export function playClassroomSelect() {
   // Shamisen twang
   playTone(800, 'square', 0.08, 0.1);
   setTimeout(() => playTone(1000, 'square', 0.12, 0.08), 60);
 }
 
-export function playDojoTimer30() {
+export function playClassroomTimer30() {
   // Single shamisen pluck
   playTone(900, 'square', 0.2, 0.1);
 }
 
-export function playDojoTimer10() {
+export function playClassroomTimer10() {
   // Rapid shamisen tremolo
   for (let i = 0; i < 4; i++) {
     setTimeout(() => playTone(850 + i * 50, 'square', 0.08, 0.08), i * 80);
