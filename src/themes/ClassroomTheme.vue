@@ -206,10 +206,17 @@ onMounted(() => {
   setTimeout(() => (introPhase.value = 3), 4000)
   setTimeout(() => (showIntro.value = false), 5000)
 
-  // Start BGM
+  // Start BGM after intro finishes (user has interacted by then)
   bgmAudio.value = new Audio(bgmFile)
   bgmAudio.value.loop = true
   bgmAudio.value.volume = 0.3
+  setTimeout(() => {
+    bgmAudio.value?.play().then(() => {
+      bgmPlaying.value = true
+    }).catch(() => {
+      // Autoplay blocked — user must click 🔇 toggle
+    })
+  }, 5200)
 })
 
 onUnmounted(() => {
