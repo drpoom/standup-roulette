@@ -169,9 +169,8 @@ import useStandup from '../composables/useStandup'
 import { X as XIcon } from 'lucide-vue-next'
 import SenseiAvatar from '../components/SenseiAvatar.vue'
 import { playDojoIntro, playDojoPraise, playDojoPunish, playDojoSelect, playDojoTimer30, playDojoTimer10 } from '../utils/audio'
-// BGM will be loaded after Byte generates it
-// import bgmFile from '../assets/sensei/classroom_bgm.mp3'
-const bgmFile = null // placeholder until BGM asset arrives
+// BGM imported via Vite asset pipeline
+import bgmFile from '../assets/sensei/classroom_bgm.mp3'
 
 const {
   appState, activeParticipant, availableParticipants, turnState,
@@ -207,12 +206,10 @@ onMounted(() => {
   setTimeout(() => (introPhase.value = 3), 4000)
   setTimeout(() => (showIntro.value = false), 5000)
 
-  // Start BGM (if available)
-  if (bgmFile) {
-    bgmAudio.value = new Audio(bgmFile)
-    bgmAudio.value.loop = true
-    bgmAudio.value.volume = 0.3
-  }
+  // Start BGM
+  bgmAudio.value = new Audio(bgmFile)
+  bgmAudio.value.loop = true
+  bgmAudio.value.volume = 0.3
 })
 
 onUnmounted(() => {
